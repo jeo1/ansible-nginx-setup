@@ -1,0 +1,5 @@
+- hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - role: get_nginx_data

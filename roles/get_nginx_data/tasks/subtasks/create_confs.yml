@@ -1,0 +1,17 @@
+- set_fact:
+    service_ip: "{{ item.service_ip }}"
+    service_name: "{{ item.service_name }}"
+    service_port: "{{ item.service_port }}"
+    service_url: "{{ item.service_url }}"
+
+- name: Copy server conf
+  template:
+    src: server.j2
+    dest: "{{ server_conf_path }}/{{ service_name }}.conf"
+  notify: Restart nginx
+
+- name: Copy upstream conf
+  template:
+    src: upstream.j2
+    dest: "{{ upstream_conf_path }}/{{ service_name }}.conf"
+  notify: Restart nginx
