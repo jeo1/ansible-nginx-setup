@@ -29,7 +29,12 @@
       results:
         "{{ results['content'] | b64decode | from_yaml }}"
 
-- debug:
+- name: nginx_conf_ip_path
+  debug:
+    msg: "{{ nginx_conf_ip_path }}"
+
+- name: results
+  debug:
     msg: "{{ results }}"
 
 #- block:
