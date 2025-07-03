@@ -29,14 +29,17 @@
       results:
         "{{ results['content'] | b64decode | from_yaml }}"
 
-- block:
-  - name: create nginx conf dirs
-    file:
-      path: "{{ item }}"
-      state: directory
-    loop:
-      - "{{ server_conf_path }}"
-      - "{{ upstream_conf_path }}"
-  
-  - include_tasks: subtasks/create_confs.yml
-    loop: "{{ results.nginx_conf_ip_list }}"
+- debug:
+    msg: "{{ results }}"
+
+#- block:
+#  - name: create nginx conf dirs
+#    file:
+#      path: "{{ item }}"
+#      state: directory
+#    loop:
+#      - "{{ server_conf_path }}"
+#      - "{{ upstream_conf_path }}"
+#  
+#  - include_tasks: subtasks/create_confs.yml
+#    loop: "{{ results.nginx_conf_ip_list }}"
