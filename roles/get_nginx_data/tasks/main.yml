@@ -29,22 +29,14 @@
       results:
         "{{ results['content'] | b64decode | from_yaml }}"
 
-- name: nginx_conf_ip_path
-  debug:
-    msg: "{{ nginx_conf_ip_path }}"
-
-- name: results
-  debug:
-    msg: "{{ results }}"
-
-#- block:
-#  - name: create nginx conf dirs
-#    file:
-#      path: "{{ item }}"
-#      state: directory
-#    loop:
-#      - "{{ server_conf_path }}"
-#      - "{{ upstream_conf_path }}"
-#  
-#  - include_tasks: subtasks/create_confs.yml
-#    loop: "{{ results.nginx_conf_ip_list }}"
+- block:
+  - name: create nginx conf dirs
+    file:
+      path: "{{ item }}"
+      state: directory
+    loop:
+      - "{{ server_conf_path }}"
+      - "{{ upstream_conf_path }}"
+  
+  - include_tasks: subtasks/create_confs.yml
+    loop: "{{ results.nginx_conf_ip_list }}"

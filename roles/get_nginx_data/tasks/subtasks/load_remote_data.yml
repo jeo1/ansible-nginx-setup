@@ -1,7 +1,3 @@
-- name: curl url
-  debug:
-    msg: "http://{{ nginx_data_ip }}:{{ nginx_data_port }}"
-
 - name: Get data from remote
   uri:
     url: "http://{{ nginx_data_ip }}:{{ nginx_data_port }}"
