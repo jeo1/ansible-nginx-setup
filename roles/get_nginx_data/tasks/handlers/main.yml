@@ -3,3 +3,4 @@
     project_src: "{{ nginx_docker_dir }}"
     state: restarted
   when: nginx_docker_dir is defined
+  ignore_errors: true
